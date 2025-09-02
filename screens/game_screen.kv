@@ -1,0 +1,53 @@
+#:kivy 2.1.0
+<GameScreen>:
+    name: "game"
+    FloatLayout:
+        Image:
+            source: "resources/images/game_screen1.jpg"
+            allow_stretch: True
+            keep_ratio: False
+            size: self.parent.size
+            pos: self.parent.pos
+
+        Button:
+            background_normal: "resources/images/level1.jpeg"
+            background_down: "resources/images/level1.jpeg"
+            size_hint: (0.18, 0.18)
+            pos_hint: {"right": 0.85, "top": 0.95} 
+            on_release:
+                app.root.transition.direction = "left"
+                app.root.current = "level1"
+
+        Button:
+            background_normal: "resources/images/level2.jpeg"
+            background_down: "resources/images/level2.jpeg"
+            size_hint: (0.18, 0.18)
+            pos_hint: {"x": 0.10, "center_y": 0.5} 
+            on_release:
+                app.root.transition.direction = "left"
+                app.root.current = "level2"
+
+        Button:
+            background_normal: "resources/images/level3.jpeg"
+            background_down: "resources/images/level3.jpeg"
+            size_hint: (0.18, 0.18)
+            pos_hint: {"right": 0.85, "y": 0.05} 
+            on_release:
+                app.root.transition.direction = "left"
+                app.root.current = "level3"
+
+        Button:
+            size_hint: None, None
+            size: 100, 100
+            pos_hint: {"top": 0.97, "right": 0.97}
+            background_normal: "resources/images/help.jpeg"
+            background_down: "resources/images/help.jpeg"
+            on_release: app.root.get_screen("game").on_help()
+
+        Button:
+            background_normal: 'resources/images/back.jpg'
+            background_down: 'resources/images/back.jpg'
+            size_hint: .1, .1
+            pos_hint: {'x': 0.02, 'y': 0.02}
+            on_release:
+                app.root.current = 'start'

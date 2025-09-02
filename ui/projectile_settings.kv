@@ -1,0 +1,39 @@
+#:kivy 2.1.0
+<ProjectileSettingsBar>:
+    orientation: 'vertical'
+    size_hint: None, None
+    size: 250, 120
+    pos_hint: {"x": 0, "top": 1}
+    padding: 10
+    spacing: 10
+
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: "Projectile Velocity"
+        size_hint_y: None
+        height: 20
+        color: 1, 1, 1, 1
+
+    Slider:
+        min: 0.5
+        max: 5.0
+        value: root.bullet_mass
+        on_value: root.bullet_mass = self.value
+
+    Label:
+        text: "Damage Radius"
+        size_hint_y: None
+        height: 20
+        color: 1, 1, 1, 1
+
+    Slider:
+        min: 10
+        max: 100
+        value: root.bullet_radius
+        on_value: root.bullet_radius = self.value

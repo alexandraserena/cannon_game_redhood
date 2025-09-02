@@ -1,0 +1,71 @@
+#:kivy 2.1.0
+#:import dp kivy.metrics.dp
+
+<StartScreen>:
+    canvas.before:
+        Rectangle:
+            source: 'resources/images/story_back.jpg'
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(100), dp(100), dp(100), dp(100)
+        size_hint: 0.8, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        Label:
+            text: "REDHOOD'S BERRY QUEST"
+            font_size: '40sp'
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Widget:
+            size_hint_y: 0.1
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(120)
+
+            Label:
+                text: "Enter your name:"
+                font_size: '18sp'
+                color: 1, 1, 1, 1
+                halign: 'left'
+                valign: 'middle'
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            TextInput:
+                id: player_name_input
+                hint_text: "Your name here"
+                font_size: '16sp'
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 1, 1, 1, 0.9
+                foreground_color: 0, 0, 0, 1
+                size_hint_y: None
+                height: dp(40)
+
+        Widget:
+            size_hint_y: 0.1
+
+        Button:
+            text: "Start Adventure"
+            font_size: '20sp'
+            bold: True
+            size_hint: None, None
+            size: dp(250), dp(60)
+            background_normal: ''
+            background_color: 1, 0.7, 0.1, 1 
+            color: 1, 1, 1, 1
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.player_name = player_name_input.text
+                app.root.current = 'game'
